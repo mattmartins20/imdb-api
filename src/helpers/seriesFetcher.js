@@ -74,12 +74,12 @@ function parseEpisodes(raw, seasonId) {
 
   item.forEach((node, index) => {
     try {
-      //let image = null;
-      //let image_large = null;
+      let image = null;
+      let image_large = null;
       try {
-        //image = node.getElementsByTagName("img")[0];
-        //image = image.getAttribute("src");
-        //image_large = image.replace(/[.]_.*_[.]/, ".");
+        image = node.getElementsByTagName("img")[0];
+        image = image.getAttribute("src");
+        image_large = image.replace(/[.]_.*_[.]/, ".");
       } catch (_) {}
 
       let noStr = null;
@@ -128,18 +128,18 @@ function parseEpisodes(raw, seasonId) {
         count = parseInt(count);
       } catch (_) {}
 
-      /*if (
+      if (
         image.includes(`spinning-progress.gif`) &&
         plot.includes("Know what this is about")
-      )*/
+      )
         return null;
 
       episodes.push({
         idx: index + 1,
         no: noStr,
         title,
-        //image,
-        //image_large,
+        image,
+        image_large,
         plot,
         publishedDate,
         rating: {
